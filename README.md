@@ -18,6 +18,6 @@
     - Local save for the tasks.
     - Prioritize 
 
-## Sneak Peak to the App
+## Sneak Peak to the App 👀
 
 Under process...

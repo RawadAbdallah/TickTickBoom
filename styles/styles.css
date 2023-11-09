@@ -1,0 +1,256 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-color);
+}
+
+.app {
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 750px;
+  padding: 20px 40px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  background-color: var(--dark-color);
+}
+
+/* ------------------------ header section --------------------- */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h2{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6vw;
+  height: 6vw;
+  min-height: 70px;
+  min-width: 70px;
+  border-radius: 500px;
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    162deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 250, 1) 45%,
+    rgba(162, 162, 162, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    162deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 250, 1) 45%,
+    rgba(162, 162, 162, 1) 100%
+  );
+  background: linear-gradient(
+    162deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 250, 1) 45%,
+    rgba(162, 162, 162, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#a2a2a2",GradientType=1);
+  box-shadow: inset 4px 4px 15px 0px rgba(0, 0, 0, 0.1),
+    13px 10px 15px -10px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.logo img {
+  width: 4vw;
+  height: 4vw;
+  min-width: 55px;
+  min-height: 55px;
+}
+
+/* ---------------------- main section --------------------------------- */
+
+.main-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+}
+
+.main-header img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform .2s ease-in-out
+}
+
+.main-header img:hover{
+    transform: scale(1.1);
+}
+
+.task-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.task-header{
+    border: 1px solid;
+    border-radius: 4px 4px 0 0;
+    border-bottom: none;
+    width: 100px;
+    text-align: center;
+
+}
+
+.task-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border: 1px solid;
+    border-radius: 0 4px 4px 4px;
+}
+
+.task-btns{
+    display: flex;
+    gap: 15px;
+}
+
+.task-btns img{
+  width: 30px;
+  cursor: pointer;
+    transition: transform .1s ease-in-out;
+}
+
+.task-btns img:hover{
+    transform: scale(1.1);
+}
+
+.task-btns img:active{
+    transform: scale(1);
+}
+
+.task-btns .drag-btn{
+  cursor: grab;
+  user-select: none;
+}
+
+.task-input-text{
+    padding: 15px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.task-input-text::placeholder{
+    text-wrap: wrap;
+}
+
+.task-checkbox{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+footer{
+    align-self: center;
+}
+
+#form-wrapper{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out, background-color 0.5s 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 1;
+}
+
+form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  top:50%;
+  left: 50%;
+  padding: 30px;
+  width: 300px;
+  border: 1px solid white;
+  background-color: var(--dark-color);
+  color: white;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+form input, select, button{
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  background-color: var(--light-color);
+  border-radius: 4px;
+  border: none;  
+  outline: none;
+}
+
+form input[type='text']{
+  font-size: 1rem;
+}
+
+form button{
+  padding: 5px 20px;
+}
+
+
+
+#task-form-exit-btn{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  top: 0;
+  background-color: var(--alert-color);
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+}
+
+#task-form-exit-btn:hover{
+  background-color: tomato;
+}
+
+#task-form-exit-btn:active{
+  transform: scale(.8);
+}
+
+#task-form-exit-btn::after, #task-form-exit-btn::before{
+  content: '';
+  position: absolute;
+  top:50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  height: 2px;
+  background-color: white;
+}
+
+#task-form-exit-btn::before{
+  height: 2px;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(135deg);
+}

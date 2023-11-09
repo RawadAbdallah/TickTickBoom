@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/utilities.css">
+    <title>TickTickBoom</title>
+</head>
+
+<body >
+    <div class="app">
+        <header>
+            <div>
+                <h2>Done <br> <span id="tasks-done">0</span></h2>
+            </div>
+            <div class="logo">
+                <img src="./assets/images/ticktickboom-logo.png" alt="TickTickBoom">
+            </div>
+            <div>
+                <h2>Left <br> <span id="tasks-left">0</span></h2>
+            </div>
+        </header>
+        <main>
+            <div class="main-header">
+                <h2>Tasks</h2>
+                <img id="filter-btn" src="./assets/icons/filter-icon.svg" alt="Filter" />
+            </div>
+
+            <div class="tasks-list">
+                <div class="task-item" id="task-id">
+                    <div class="task-header">
+                        <span id="task-due-date">18/02/2024</span>
+                    </div>
+                    <div class="task-body">
+                        <div class="task-btns">
+                            <img class='drag-btn' src="./assets/icons/drag-dots.svg" alt="|">
+                            <img src="./assets/icons/delete-icon.svg" alt="Delete">
+                            <img src="./assets/icons/edit-icon.svg" alt="Edit">
+                        </div>
+                        <label for="checkbox-1" class="task-input-text">"Get ketchup from the Super Market"</label>
+                        <input id="checkbox-1" class="task-checkbox" type="checkbox" name="task-checkbox">
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <span id="task-due-date">18/02/2024</span>
+                    </div>
+                    <div class="task-body">
+                        <div class="task-btns">
+                            <img src="./assets/icons/drag-dots.svg" alt="|">
+                            <img src="./assets/icons/delete-icon.svg" alt="Delete">
+                            <img src="./assets/icons/edit-icon.svg" alt="Edit">
+                        </div>
+                        <label for="checkbox-2" class="task-input-text">"Get ketchup from the Super Market"</label>
+                        <input id="checkbox-2" class="task-checkbox" type="checkbox" name="task-checkbox">
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <div id="form-wrapper" class="hidden" >
+            <form id="task-form">
+            <div id="task-form-exit-btn"></div>
+                <label for="task-text">Enter your task: </label>
+                <input id="task-text" type="text" >
+            <div>
+                <label for="due-date">Due Date: </label>
+                <input id="due-date" type="date" min="today">
+            </div>
+            <div>
+                <label for="priority">Priority: </label>
+                <select id="priority">
+                    <option value="Select Priority" selected>Select Priority</option>
+                    <option value="high">High</option>
+                    <option value="mid">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+            <button id="add-task-btn">Add</button>
+        </form>
+        </div>
+
+        <footer>
+            <button id="create-task-btn" role="button"></button>
+        </footer>
+    </div>
+
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
