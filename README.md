@@ -20,4 +20,5 @@
 
 ## Sneak Peak to the App 👀
 
-Under process...
+| ![App 1](./assets/images/app1.jpeg) |![App 2](./assets/images/app2.jpeg)  |
+|--|--|
