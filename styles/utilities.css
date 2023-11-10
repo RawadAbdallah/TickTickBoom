@@ -20,17 +20,20 @@
 }
 
 #create-task-btn {
-  position: relative;
+  position: fixed;
   background-color: var(--light-color);
-  box-shadow: 8px 8px 15px -3px rgba(0, 0, 0, 0.4),
-    inset 0px 5px 15px -3px rgba(0, 0, 0, 0.4);
-  border-radius: 100px;
   height: 50px;
   width: 50px;
-  cursor: pointer;
-  transition: all 250ms;
-  border: 0;
+  left: 50%;
+  bottom: 20px;
   font-size: 16px;
+  border: 0;
+  border-radius: 100px;
+  box-shadow: 8px 8px 15px -3px rgba(0, 0, 0, 0.4),
+  inset 0px 5px 15px -3px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+  transition: all 250ms;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -52,13 +55,17 @@
 }
 
 #create-task-btn:hover {
-  transform: scale(1.05) rotate(-1deg);
+  transform: translateX(-50%) scale(1.05) rotate(-1deg);
 }
 
 #create-task-btn:active {
-  transform: scale(1);
+  transform: translateX(-50%) scale(1);
 }
 
 .hidden {
   transform: translateY(-150%);
+}
+
+.hidden2{
+  transform: translateX(-150%);
 }

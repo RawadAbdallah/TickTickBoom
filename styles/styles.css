@@ -8,10 +8,9 @@ body {
 .app {
   position: relative;
   color: white;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
   max-width: 750px;
   padding: 20px 40px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
@@ -78,12 +77,15 @@ header h2{
 /* ---------------------- main section --------------------------------- */
 
 .main-header{
+    position: sticky;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid white;
     margin-bottom: 15px;
+    background-color: var(--dark-color);
 }
 
 .main-header img{
@@ -105,12 +107,25 @@ header h2{
 }
 
 .task-header{
-    border: 1px solid;
-    border-radius: 4px 4px 0 0;
-    border-bottom: none;
-    width: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     text-align: center;
+}
 
+.task-due-date{
+  border:1px solid white;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  padding: 0 5px;
+}
+
+.task-priority{
+  width: 30px;
+  height:30px;
+  background-color: var(--alert-color);
+  border-radius: 4px 4px 0 0;
 }
 
 .task-body{
@@ -119,7 +134,7 @@ header h2{
     justify-content: space-between;
     padding: 0 15px;
     border: 1px solid;
-    border-radius: 0 4px 4px 4px;
+    border-radius: 0 0 4px 4px;
 }
 
 .task-btns{
@@ -166,8 +181,9 @@ header h2{
     cursor: pointer;
 }
 
-footer{
-    align-self: center;
+.task-done{
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 
 #form-wrapper{
@@ -182,7 +198,7 @@ footer{
   z-index: 1;
 }
 
-form{
+#task-form{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -216,7 +232,6 @@ form input[type='text']{
 form button{
   padding: 5px 20px;
 }
-
 
 
 #task-form-exit-btn{
@@ -253,4 +268,27 @@ form button{
   height: 2px;
   transform-origin: center;
   transform: translate(-50%, -50%) rotate(135deg);
+}
+
+#editForm{
+  position: absolute;
+  height:100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease-in-out;
+  top:0;
+  left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+
+@media (max-width: 420px){
+  .task-body{
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
 }
