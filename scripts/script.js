@@ -1,31 +1,37 @@
 // DOM elements variables
-const tasks_done = document.getElementById("tasks-done"),
-  tasks_left = document.getElementById("tasks-left"),
-  task_form_wrapper = document.getElementById("form-wrapper"),
-  tasks_list_element = document.querySelector(".tasks-list");
-(task_form = document.getElementById("task-form")),
-  (create_task_btn = document.getElementById("create-task-btn")),
-  (add_task_btn = document.getElementById("add-task-btn")),
-  (form_exit_btn = document.getElementById("task-form-exit-btn")),
-  (task_input = document.getElementById("task-text")),
-  (due_date_input = document.getElementById("due-date")),
-  (priority_input = document.getElementById("priority"));
+const tasks_done = document.getElementById("tasks-done")
+const tasks_left = document.getElementById("tasks-left")
+const  task_form_wrapper = document.getElementById("form-wrapper")
+const tasks_list_element = document.querySelector(".tasks-list")
+const task_form = document.getElementById("task-form")
+const  create_task_btn = document.getElementById("create-task-btn")
+const add_task_btn = document.getElementById("add-task-btn")
+const form_exit_btn = document.getElementById("task-form-exit-btn")
+const task_input = document.getElementById("task-text")
+const due_date_input = document.getElementById("due-date")
+const priority_input = document.getElementById("priority")
+const editForm = document.getElementById("edit-form")
+const editTaskInput = document.getElementById("edit-task-input")
+const editTaskForm = document.getElementById("edit-task-form")
+const cancelEditBtn = document.getElementById("cancel-edit-btn")
 
 let tasks_done_count = 0;
 let tasks_left_count = 0;
-  
+
 // Function to load existing tasks from localStorage
 function loadExistingTasks() {
   const tasks_list = JSON.parse(localStorage.getItem("tasks_list")) || [];
   tasks_list.forEach(function (task) {
     if (!document.getElementById(task.id)) {
       createTaskElement(task);
-
+      console.log(task);
       if (task.isChecked) {
         tasks_done_count++;
       } else {
         tasks_left_count++;
       }
+
+      updateCounters();
     }
   });
 }
@@ -35,7 +41,7 @@ updateCounters();
 // On Window load insert saved tasks elements to the DOM.
 loadExistingTasks();
 
-function updateCounters(){
+function updateCounters() {
   tasks_done.innerText = tasks_done_count;
   tasks_left.innerText = tasks_left_count;
 }
@@ -61,6 +67,8 @@ add_task_btn.addEventListener("click", function (e) {
     task_input.value = "";
     due_date_input.value = "";
     task_form_wrapper.classList.toggle("hidden");
+    tasks_left_count++;
+    updateCounters();
   } else {
     if (text.length <= 1) {
       alert("enter a task");
@@ -113,25 +121,20 @@ function createTaskElement(task) {
     }
 
     if (taskCheckbox.checked) {
-      tasks_done_count++;
-      tasks_left_count--;
-    } else {
       tasks_done_count--;
-      tasks_left_count++;
+    } else {
+      tasks_left_count--;
     }
     updateCounters();
-
   });
 
   const editIcon = document.createElement("img");
   editIcon.src = "./assets/icons/edit-icon.svg";
   editIcon.alt = "Edit";
   editIcon.addEventListener("click", function (e) {
-    editForm.classList.toggle("jidd");
-    const editForm = document.getElementById("editForm");
-    const editTaskInput = document.getElementById("editTaskInput");
     editTaskInput.value = task.text;
-    const editTaskForm = document.getElementById("editTaskForm");
+
+    editForm.classList.toggle("hidden2");
 
     editTaskForm.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -142,7 +145,7 @@ function createTaskElement(task) {
         taskLabel.textContent = task.text;
         let new_tasks_list =
           JSON.parse(localStorage.getItem("tasks_list")) || [];
-        const taskIndex = new_tasks_list.findIndex((t) => t.id === task.id);
+        const taskIndex = new_tasks_list.indexOf(task.id);
         if (taskIndex !== -1) {
           new_tasks_list[taskIndex].text = updatedText;
           localStorage.setItem("tasks_list", JSON.stringify(new_tasks_list));
@@ -150,7 +153,6 @@ function createTaskElement(task) {
       }
     });
 
-    const cancelEditBtn = document.getElementById("cancelEditBtn");
     cancelEditBtn.addEventListener("click", function () {
       editForm.classList.add("hidden2");
     });
@@ -176,13 +178,18 @@ function createTaskElement(task) {
 
   taskCheckbox.addEventListener("change", function () {
     if (taskItem.classList.contains("task-done")) {
+      tasks_left_count++;
+      tasks_done_count--;
       taskItem.classList.remove("task-done");
     } else {
+      tasks_done_count++;
+      tasks_left_count--;
       taskItem.classList.add("task-done");
     }
     task.isChecked = taskCheckbox.checked;
+    updateCounters();
     let new_tasks_list = JSON.parse(localStorage.getItem("tasks_list")) || [];
-    const taskIndex = new_tasks_list.findIndex((t) => t.id === task.id);
+    const taskIndex = new_tasks_list.indexOf(task.id);
     if (taskIndex !== -1) {
       new_tasks_list[taskIndex].isChecked = taskCheckbox.checked;
       localStorage.setItem("tasks_list", JSON.stringify(new_tasks_list));
